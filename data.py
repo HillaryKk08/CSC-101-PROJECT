@@ -1,5 +1,6 @@
 from typing import Dict, Optional
 import json
+import interviewQuestions
 
 class studentPopulations:
     def __init__(self):
@@ -29,27 +30,36 @@ class studentPopulations:
         else:
             return "No data for {ethnicity} in {year}"
 
-    #Class for tge the question : (grage, answers, rating)
-class InterviewQuestions:
-        def __init__(self):
-        #self.data will hold all responses, organized by question and grade level.
-            self.data = {}
+    #Class for the question : (grade, answers, rating)
 
-        def add_question(self, question:str,  grade:str,rating:int):
-            #create a key for question if it doesnt exist
+class InterviewQuestions:
+    def __init__(self):
+        self.questions = interviewQuestions.questions_data
+
+    def get_questions():
+        #displays all the questions
+        print(" Question 1: Rate 1-7 how much representation you feel is reflected from Cal Poly faculty & staff "
+              "\n Question 2: Rate 1-7 your comfortability in a classroom setting based on the demographics of your classmates"
+              "\n Question 3: Rate 1-7 how supported you feel as a Black student in Cal Poly for resources."
+              "\n Question 4: Rate 1-7 how much you agree with the following statement: 'I see students like me walking about campus'"
+              "\n Question 5: Rate 1-7 how much you agree with the following statement: 'I feel safe as a Black student at Cal Poly'"
+              "\n Question 6: Rate 1-7, 1 being least, 7 being most, how often you face discrimination: hate speech, open prejudices, etc. at Cal Poly")
+
+    def add_question(self, question:str,  grade:str,rating:int):
+            #create a key for question if it doesn't exist
             if question not in self.data:
                 self.data[question] = {}
-            #creates a grade kee, and fills it with rating from 1 to 10
+            #creates a grade key, and fills it with rating from 1 to 10
             if grade not in self.data[question]:
                 self.data[question][grade] = {}
                 for i in range(1,11):
                     self.data[question][grade][i] = 0
-            #checks if rating is between 1 to 10 and if it the vote count for that rating increases by 1
+            #checks if rating is between 1 and 10 and if is, the vote count for that rating increases by 1
             if rating >= 1 and rating <= 10:
                 self.data[question][grade][rating] += 1
 
         #calculates the average rating for a question across all grades
-        def average_rating(self,question:str):
+    def average_rating(self,question:str):
             if question not in self.data:
                 return None
             total_score = 0 #keeps track of all score
