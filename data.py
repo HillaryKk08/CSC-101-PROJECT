@@ -45,12 +45,6 @@ class InterviewQuestions:
               "\n Question 5: Rate 1-7 how much you agree with the following statement: 'I feel safe as a Black student at Cal Poly'"
               "\n Question 6: Rate 1-7, 1 being least, 7 being most, how often you face discrimination: hate speech, open prejudices, etc. at Cal Poly")
 
-    def average_per_question_by_grade(self, question:str, num:int)->float:
-        count = 0
-        for i in range(7):
-            count += interviewQuestions.questions_data[question][num][i]
-        average = count / 7
-        return average
 
     def add_question(self, question:str,  grade:str,rating:int):
             #create a key for question if it doesn't exist
