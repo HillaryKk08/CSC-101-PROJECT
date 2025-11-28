@@ -38,12 +38,13 @@ class InterviewQuestions:
 
     def get_questions(self):
         #displays all the questions
-        print(" Question 1: Rate 1-7 how much representation you feel is reflected from Cal Poly faculty & staff "
+        text = ("Question 1: Rate 1-7 how much representation you feel is reflected from Cal Poly faculty & staff "
               "\n Question 2: Rate 1-7 your comfortability in a classroom setting based on the demographics of your classmates"
               "\n Question 3: Rate 1-7 how supported you feel as a Black student in Cal Poly for resources."
               "\n Question 4: Rate 1-7 how much you agree with the following statement: 'I see students like me walking about campus'"
               "\n Question 5: Rate 1-7 how much you agree with the following statement: 'I feel safe as a Black student at Cal Poly'"
               "\n Question 6: Rate 1-7, 1 being least, 7 being most, how often you face discrimination: hate speech, open prejudices, etc. at Cal Poly")
+        return text
 
 
     def add_question(self, question:str,  grade:str,rating:int):
