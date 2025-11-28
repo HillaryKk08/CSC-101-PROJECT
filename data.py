@@ -45,7 +45,7 @@ class InterviewQuestions:
               "\n Question 5: Rate 1-7 how much you agree with the following statement: 'I feel safe as a Black student at Cal Poly'"
               "\n Question 6: Rate 1-7, 1 being least, 7 being most, how often you face discrimination: hate speech, open prejudices, etc. at Cal Poly")
 
-    def get_average_by_grade(self, question:str, num:int)->float:
+    def average_per_question_by_grade(self, question:str, num:int)->float:
         count = 0
         for i in range(7):
             count += interviewQuestions.questions_data[question][num][i]
