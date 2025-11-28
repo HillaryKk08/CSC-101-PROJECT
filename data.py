@@ -54,10 +54,10 @@ class InterviewQuestions:
             #creates a grade key, and fills it with rating from 1 to 10
             if grade not in self.data[question]:
                 self.data[question][grade] = {}
-                for i in range(1,11):
+                for i in range(1,8):
                     self.data[question][grade][i] = 0
-            #checks if rating is between 1 and 10 and if is, the vote count for that rating increases by 1
-            if rating >= 1 and rating <= 10:
+            #checks if rating is between 1 and 7 and if is, the vote count for that rating increases by 1
+            if rating >= 1 and rating <= 7:
                 self.data[question][grade][rating] += 1
 
         #calculates the average rating for a question across all grades
