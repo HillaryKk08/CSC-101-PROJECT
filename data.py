@@ -28,7 +28,7 @@ class studentPopulations:
             value = info[key]
             return f"{ethnicity.title()} students we {value}% of Cal Poly's student population in {year}"
         else:
-            return "No data for {ethnicity} in {year}"
+            return f"No data for {ethnicity} in {year}"
 
     #Class for the question : (grade, answers, rating)
 
@@ -36,7 +36,7 @@ class InterviewQuestions:
     def __init__(self):
         self.questions = interviewQuestions.questions_data
 
-    def get_questions():
+    def get_questions(self):
         #displays all the questions
         print(" Question 1: Rate 1-7 how much representation you feel is reflected from Cal Poly faculty & staff "
               "\n Question 2: Rate 1-7 your comfortability in a classroom setting based on the demographics of your classmates"
@@ -44,6 +44,13 @@ class InterviewQuestions:
               "\n Question 4: Rate 1-7 how much you agree with the following statement: 'I see students like me walking about campus'"
               "\n Question 5: Rate 1-7 how much you agree with the following statement: 'I feel safe as a Black student at Cal Poly'"
               "\n Question 6: Rate 1-7, 1 being least, 7 being most, how often you face discrimination: hate speech, open prejudices, etc. at Cal Poly")
+
+    def get_average_by_grade(self, question:str, num:int)->float:
+        count = 0
+        for i in range(7):
+            count += interviewQuestions.questions_data[question][num][i]
+        average = count / 7
+        return average
 
     def add_question(self, question:str,  grade:str,rating:int):
             #create a key for question if it doesn't exist
