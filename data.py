@@ -49,32 +49,28 @@ class InterviewQuestions:
 
     def add_question(self, question:str,  grade:str,rating:int):
             #create a key for question if it doesn't exist
-            if question not in self.data:
-                self.data[question] = {}
+            if question not in self.questions:
+                self.questions[question] = {}
             #creates a grade key, and fills it with rating from 1 to 10
-            if grade not in self.data[question]:
-                self.data[question][grade] = {}
+            if grade not in self.questions[question]:
+                self.questions[question][grade] = {}
                 for i in range(1,8):
-                    self.data[question][grade][i] = 0
+                    self.questions[question][grade][i] = 0
             #checks if rating is between 1 and 7 and if is, the vote count for that rating increases by 1
             if rating >= 1 and rating <= 7:
-                self.data[question][grade][rating] += 1
+                self.questions[question][grade][rating] += 1
 
-        #calculates the average rating for a question across all grades
-    def average_rating(self,question:str):
-            if question not in self.data:
-                return None
-            total_score = 0 #keeps track of all score
-            total_votes = 0#keeps track of all votes
-            #goes through all grade and add rating up
-            for grade in self.data[question]:
-                for rating in self.data[question][grade]:
-                    count=self.data[question][grade][rating]
-                    total_votes+=count
-                    total_score+=rating * count #rating x number of votes
-
-            #calculates average
-            if total_votes == 0:
-                return None
-            else:
-                return total_score/total_votes
+    #calculates the average rating for a question across all grades
+    def average_rating(self, question: str):
+        if question not in self.questions:
+            return None
+        total_score = 0 #keeps track of all the scores
+        total_votes = 0 #keeps track of how many votes a rating has
+        for grade in self.questions[question]: # for instance: Freshman, Sophomore, etc.
+            for rating in self.questions[question][grade]: # each rating, 1 through 7
+                count = self.questions[question][grade][rating] # count becomes how many in each rating
+                total_score += rating*count
+                total_votes += count
+        if total_votes == 0:
+            return None
+        return total_score/total_votes

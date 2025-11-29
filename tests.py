@@ -16,7 +16,15 @@ class MyTestCase(unittest.TestCase):
               "\n Question 6: Rate 1-7, 1 being least, 7 being most, how often you face discrimination: hate speech, open prejudices, etc. at Cal Poly")
         self.assertEqual(actual, expected)
         # passed
-
+    def test_avergage(self):
+        obj = data.InterviewQuestions()
+        actual = obj.average_rating("Question 1")
+        expected = 2.225
+        self.assertEqual(actual, expected)
+        #passed
+    def test_add_question(self):
+        obj = data.InterviewQuestions()
+        actual = obj.add_question("Question 8", "Freshman", 3, 2)
 
 if __name__ == '__main__':
     unittest.main()
