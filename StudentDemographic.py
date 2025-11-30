@@ -77,3 +77,26 @@ DemographicData= {2015:{"HISPANIC/LATINO":15.6,
                         "WHITE": 51.41,
                         "NON-RESIDENT ALIEN": 1.96,
                         "UNKNOWN":2.84}}
+
+class DemoPopulation:
+    def __init__(self):
+        self.data = DemographicData.copy()
+
+    def add_population_data(self, year: int, ethnicity: str, percentage: float):
+        if year not in self.data:
+            self.data[year] = {}
+        ethnicity = ethnicity.strip().upper()
+
+        valid_ethnicities = [
+            "HISPANIC/LATINO", "AFRICAN AMERICAN", "NATIVE AMERICAN",
+            "HAWAIIAN/PACIFIC ISLANDER", "ASIAN AMERICAN", "MULTI-RACIAL",
+            "WHITE", "NON-RESIDENT ALIEN", "UNKNOWN"
+        ]
+
+        if ethnicity not in valid_ethnicities:
+            raise KeyError(f"Invalid ethnicity: {ethnicity}")
+
+        self.data[year][ethnicity] = percentage
+
+    def get_year(self, year: int):
+        return self.data.get(year, None)
